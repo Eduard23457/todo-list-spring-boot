@@ -22,9 +22,16 @@ public class TaskController {
         TaskDtoResponse response = taskService.createTask(taskDtoRequest);
         return ResponseEntity.ok(response);
     }
+
     @GetMapping("/findAll")
-    public ResponseEntity<List<TaskDtoResponse>>getAllTask(){
+    public ResponseEntity<List<TaskDtoResponse>> getAllTask() {
         List<TaskDtoResponse> allTask = taskService.findAllTask();
         return ResponseEntity.ok(allTask);
+    }
+@GetMapping("/findById")
+    public ResponseEntity<TaskDtoResponse> findById(@RequestParam Long id) {
+        TaskDtoResponse task = taskService.findById(id);
+        return ResponseEntity.ok(task);
+
     }
 }
