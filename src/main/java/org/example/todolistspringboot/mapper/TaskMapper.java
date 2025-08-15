@@ -5,6 +5,8 @@ import org.example.todolistspringboot.dto.TaskDtoRequest;
 import org.example.todolistspringboot.dto.TaskDtoResponse;
 import org.example.todolistspringboot.entity.Task;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -16,7 +18,9 @@ public interface TaskMapper {
 
     TaskDtoResponse toDto(Task task);
 
-    List<TaskDtoResponse>toList(List<Task>tasks);
+    List<TaskDtoResponse> toList(List<Task> tasks);
 
-    TaskDtoResponse update(Long id,TaskDtoRequest taskDtoRequest);
+    @Mapping(target = "id", ignore = true)
+    void update(TaskDtoRequest taskDtoRequest, @MappingTarget Task task);
+
 }

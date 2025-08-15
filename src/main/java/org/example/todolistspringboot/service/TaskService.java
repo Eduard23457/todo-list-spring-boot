@@ -43,9 +43,16 @@ public class TaskService {
     public TaskDtoResponse updateEntity(Long id, TaskDtoRequest taskDtoRequest) {
         Task task = taskRepository.findById(id).orElseThrow(()
                 -> new RuntimeException("not found id in bd" + id));
-        TaskDtoResponse updateTask = taskMapper.update(id, taskDtoRequest);
-        return updateTask;
+        taskMapper.update(taskDtoRequest, task);
+        Task savedTask = taskRepository.save(task);
+        return taskMapper.toDto(savedTask);
     }
 
+    public void deleteById(Long id) {
+        if (!taskRepository.existsById(id)) {
+            throw new RuntimeException("Task not found with id" + id);
+        }
+        taskRepository.deleteById(id);
+    }
 
 }
