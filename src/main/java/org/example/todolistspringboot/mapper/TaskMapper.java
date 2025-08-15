@@ -17,4 +17,6 @@ public interface TaskMapper {
     TaskDtoResponse toDto(Task task);
 
     List<TaskDtoResponse>toList(List<Task>tasks);
+
+    TaskDtoResponse update(Long id,TaskDtoRequest taskDtoRequest);
 }

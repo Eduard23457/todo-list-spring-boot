@@ -28,10 +28,16 @@ public class TaskController {
         List<TaskDtoResponse> allTask = taskService.findAllTask();
         return ResponseEntity.ok(allTask);
     }
-@GetMapping("/findById")
+
+    @GetMapping("/findById")
     public ResponseEntity<TaskDtoResponse> findById(@RequestParam Long id) {
         TaskDtoResponse task = taskService.findById(id);
         return ResponseEntity.ok(task);
+    }
 
+    @PutMapping("/update")
+    public ResponseEntity<TaskDtoResponse> updateTask(Long id, TaskDtoRequest taskDtoRequest) {
+        TaskDtoResponse taskDtoResponse = taskService.updateEntity(id, taskDtoRequest);
+        return ResponseEntity.ok(taskDtoResponse);
     }
 }
