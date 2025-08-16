@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.todolistspringboot.dto.TaskDtoRequest;
 import org.example.todolistspringboot.dto.TaskDtoResponse;
 import org.example.todolistspringboot.entity.Task;
+import org.example.todolistspringboot.exception.TaskNotFoundException;
 import org.example.todolistspringboot.mapper.TaskMapper;
 import org.example.todolistspringboot.repository.TaskRepository;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class TaskService {
 
     public void deleteById(Long id) {
         if (!taskRepository.existsById(id)) {
-            throw new RuntimeException("Task not found with id" + id);
+            throw new TaskNotFoundException(id);
         }
         taskRepository.deleteById(id);
     }
