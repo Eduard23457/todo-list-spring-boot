@@ -27,3 +27,13 @@ flowchart TD
     C --> D[(Database)]
     B --> E[DTO]
     C --> F[Entity]
+    
+    
+## 🏃‍♂️ Запуск приложения
+
+```bash
+# Клонировать репозиторий
+git clone https://github.com/Eduard23457/todo-list-spring-boot.git
+
+# Запустить приложение
+./mvnw spring-boot:run

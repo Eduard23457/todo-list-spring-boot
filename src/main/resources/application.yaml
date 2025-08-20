@@ -11,3 +11,7 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+user:
+  service:
+    url: https://api.agify.io
